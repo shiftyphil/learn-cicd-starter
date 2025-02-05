@@ -1,19 +1,19 @@
 package auth
 
 import (
-    "testing"
-    "fmt"
-    "net/http"
+	"fmt"
+	"net/http"
+	"testing"
 )
 
 func TestGetAPIKey(t *testing.T) {
-    want := "THISISANAPIKEY"
+	want := "THISISANAPIKEY"
 
-    header := http.Header{}
-    header.Set("Authorization", fmt.Sprintf("ApiKey %s", want))
+	header := http.Header{}
+	header.Set("Authorization", fmt.Sprintf("ApiKey %s", want))
 
-    got, _ := GetAPIKey(header)
-    if want !=  got {
-         t.Fatalf("expected: %v, got: %v", want, got)
-    }
+	got, _ := GetAPIKey(header)
+	if want != got {
+		t.Fatalf("expected: %v, got: %v", want, got)
+	}
 }
